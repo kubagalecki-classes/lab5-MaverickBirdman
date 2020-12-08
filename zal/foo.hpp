@@ -4,9 +4,28 @@
 
 #include <list>
 #include <vector>
+#include <iterator>
 
-std::vector< char > foo(std::list< Human >& people)
+using std::vector;
+using std::list;
+using std::iterator;
+
+vector<char> foo(list<Human> &people)
 {
-    // Twoja implementacja tutaj
-    return {};
+	vector<char> wektor(people.size());
+	list<Human>::reverse_iterator it = people.rbegin();
+	vector<char>::reverse_iterator rit = wektor.rbegin();
+	for (it; it != people.rend(); it++)
+	{
+		it->birthday();
+		if (it->isMonster()==true)
+		{
+			*rit = 'n';
+		}
+		else
+		{
+			*rit = 'y';
+		}
+	}
+	return wektor;
 }
