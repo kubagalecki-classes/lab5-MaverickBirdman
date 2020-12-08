@@ -13,9 +13,9 @@ using std::iterator;
 vector<char> foo(list<Human> &people)
 {
 	vector<char> wektor(people.size());
-	list<Human>::reverse_iterator it = people.rbegin();
+	list<Human>::iterator it = people.begin();
 	vector<char>::reverse_iterator rit = wektor.rbegin();
-	for (it; it != people.rend(); it++)
+	for (it; it != people.end(); it++)
 	{
 		it->birthday();
 		if (it->isMonster()==true)
@@ -26,6 +26,7 @@ vector<char> foo(list<Human> &people)
 		{
 			*rit = 'y';
 		}
+		rit++;
 	}
 	return wektor;
 }
